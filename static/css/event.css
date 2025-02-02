@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0; /* Light Gray */
+    color: #343a40; /* Dark Gray */
+}
+
+/* Hero Section with Gradient Background */
+/* .hero-section {
+    height: 60vh;
+    background: linear-gradient(135deg, #800000, #8f9259); /* Maroon to Golden Yellow gradient */
+    /* color: #ffffff; /* White text */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; */ 
+/* } */
+
+.hero-section {
+    height: 40vh;
+    background: linear-gradient(135deg, #800000, #FFFDD0); /* Maroon to Cream */
+    color: #ffffff; /* White text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+
+.hero-section h1, 
+.hero-section p {
+    color: #ffffff; /* White text */
+}
+
+.timeimg {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.timetext {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #ffffff; /* White */
+}
+
+.card {
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+    border: 1px solid #800000; /* Maroon border */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #800000; /* Maroon */
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #6c757d; /* Slate Gray */
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #343a40; /* Dark Gray */
+}
+
+.extra-content {
+    display: none;
+    color: #343a40; /* Dark Gray */
+    margin-bottom: 20px;
+}
+
+.readmore {
+    background-color: #ffcc00; /* Golden Yellow */
+    color: #800000; /* Maroon text */
+    border: none;
+    position: static;
+    margin-top:10px;
+}
+
+/* .b1{
+    margin-top:20px;
+    margin-bottom:20px;
+
+} */
+
+/* .d1{
+    margin: 10px;
+} */
+
+.readmore:hover {
+    background-color: #e6b800; /* Slightly darker shade of Golden Yellow */
+}

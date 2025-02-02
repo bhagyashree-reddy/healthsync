@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-light text-dark div1">
+
+  <div class="container mt-5 upload-container mb-4">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <div class="alert-container">
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show upload-flash" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Buttons Container -->
+    <div class="upload-button-container">
+      <form action="{{ url_for('contacts') }}" method="POST" class="mb-2">
+        <button type="submit" class="btn btn-warning px-5">Contact Information</button>
+      </form>
+    
+      <form action="{{ url_for('logout') }}" method="POST">
+        <button type="submit" class="btn btn-warning px-5">Logout</button>
+      </form>
+    </div>
+
+    <h1 class="text-center mb-4">Admin Page</h1>
+
+    <!-- Image Upload Form for Gallery-->
+    <div class="mb-5">
+      <h2 class="text-center mb-4">Upload Images for Gallery</h2>
+      <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="image_upload" class="form-label">Select Images:</label>
+          <input type="file" id="image_upload" name="images" class="form-control" accept="image/*" multiple>
+        </div>
+        <button type="submit" class="btn btn-warning px-5">Upload Images</button>
+      </form>
+    </div>
+
+    <!-- Image and Text Upload Form for Event Page-->
+    <div class="container">
+      <h2 class="text-center mb-4">Upload Image and Text for Event Page</h2>
+      <form action="{{ url_for('event_upload') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="image" class="form-label">Select Image:</label>
+          <input type="file" id="image" name="image" class="form-control" accept="image/*">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Enter Text:</label>
+          <input type="text" id="description" name="description" class="form-control"
+            placeholder="Enter your text here">
+        </div>
+        <button type="submit" class="btn btn-warning px-5">Upload Image and Text</button>
+      </form>
+    </div>
+
+    <!-- Image and Text Upload Form for Faculty Page-->
+    <div class="container">
+      <h2 class="text-center mb-4">Upload Image and Text for Faculty Page</h2>
+      <form action="{{ url_for('faculty_upload') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="faculty_name" class="form-label">Faculty Name:</label>
+          <input type="text" id="faculty_name" name="faculty_name" class="form-control"
+            placeholder="Enter faculty name">
+        </div>
+        <div class="mb-3">
+          <label for="designation" class="form-label">Designation:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="faculty_designation" id="principal" value="Principal"
+              required>
+            <label class="form-check-label" for="principal">Principal</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="faculty_designation" id="vice_principal"
+              value="Vice Principal" required>
+            <label class="form-check-label" for="vice_principal">Vice Principal</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="faculty_designation" id="administrator"
+              value="Administrator" required>
+            <label class="form-check-label" for="administrator">Administrator</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="faculty_designation" id="professor" value="Professor"
+              required>
+            <label class="form-check-label" for="professor">Professor</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="faculty_designation" id="assistant_professor"
+              value="Assistant Professor" required>
+            <label class="form-check-label" for="assistant_professor">Assistant Professor</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="faculty_age" class="form-label">Faculty Age:</label>
+          <input type="number" id="faculty_age" name="faculty_age" class="form-control" placeholder="Enter faculty age">
+        </div>
+        <div class="mb-3">
+          <label for="faculty_experience" class="form-label">Years of Experience:</label>
+          <input type="number" id="faculty_experience" name="faculty_experience" class="form-control"
+            placeholder="Enter years of experience">
+        </div>
+        <div class="mb-3">
+          <label for="faculty_qualification" class="form-label">Qualification:</label>
+          <input type="text" id="faculty_qualification" name="faculty_qualification" class="form-control"
+            placeholder="Enter Qualification">
+        </div>
+        <div class="mb-3">
+          <label for="faculty_image" class="form-label">Select Image:</label>
+          <input type="file" id="faculty_image" name="faculty_image" class="form-control" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-warning px-5">Upload Faculty Information</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional) -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> -->
+</div>
+{% endblock %}

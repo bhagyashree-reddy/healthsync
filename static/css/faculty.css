@@ -1,0 +1,49 @@
+.faculty-card {
+  /* background-color: #5885b1; */
+  background: linear-gradient(135deg, #f0f0f0, #FFFDD0); 
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.faculty-card {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.faculty-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.col-lg-4 {
+  margin-bottom: 1rem; /* Adjust spacing between rows */
+}
+
+.row.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.col-lg-4 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .col-lg-4 {
+    margin-bottom: 20px;
+  }
+}

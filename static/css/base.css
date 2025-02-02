@@ -1,0 +1,206 @@
+
+
+.div1{
+    padding-top: 87px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* navbar */
+#neubar {
+    background: #800000;
+    box-shadow: 4px 6px 12px rgba(179, 105, 105, 0.4)
+  }
+  
+  .nav-item .active {
+    border-radius: 6px;
+    background: linear-gradient(145deg, #ffe7ca, #f5d7b2);
+    box-shadow:  #ffe7ca;
+  }
+  #neubar .dropdown-menu a:hover {
+    color: #800000
+  }
+  #neubar .nav-item {
+    margin : auto 4px;
+  }
+  #neubar a {
+  
+    padding-left:12px;
+    padding-right:12px;
+  }
+  #neubar .dropdown-menu {
+    background : #ffe7ca
+  }
+  a.navbar-brand {
+    color: #454545
+  }
+
+
+
+
+  .ytvid{
+    border-radius: 4%;
+  }
+
+
+
+  /* footer */
+  .fi{
+    text-decoration: none;
+    padding: 10px;
+    background-color: #ffe7ca;
+    margin: 10px;
+    border-radius: 38%;
+    color: black;
+  }
+      
+  .ft{
+    background-color: black;
+    color: black;
+  }
+
+  .ftbg{
+    background: #800000;
+    margin-top: auto;
+  }
+
+  .b-example-divider {
+    
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+
+
+/* Carousel */
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+
+.carousel-item {
+  height: 38.7rem;
+}
+
+  
+  
+
+
+/* map */
+  
+.map-container{
+  overflow:hidden;
+  position:relative;
+  height:0;
+  border-radius: 1%;
+  
+  }
+ .map1{
+  padding-bottom: 20px;
+ }
+  .map-container iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+  }
+
+
+  /* gallery */
+
+.gallery-item img {
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.page-link.btn-warning {
+background-color: #ffc107; /* Bootstrap warning color */
+border-color: #ffc107; /* Ensure the border matches the button color */
+color: black;
+}
+
+
+/* Featurettes */
+
+.featurette-divider {
+  margin: 5rem 0; 
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+
+/* Login page 
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+} */
+/* admin page  */
+.btn-warning:hover {
+  background-color: #102770; /* Dark background on hover */
+  color: #ffeba7; /* Yellow text color on hover */
+}
+
+.form-control {
+  height: 50px; /* Adjusted height for inputs */
+  font-size: 16px; /* Larger font size for better readability */
+}
+
+.form-control-lg {
+  height: 60px; /* Larger height for text inputs */
+  font-size: 18px; /* Larger font size */
+}
+
+/* 
+
+upload page css  */
+
+
+.upload-button-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns buttons to the right */
+  gap: 10px; /* Adds space between buttons */
+  margin-bottom: 1rem; /* Adds space below the buttons */
+}
+
+.upload-button-container .btn {
+  margin-bottom: 0; /* Removes default margin-bottom */
+}
+
+
+
+

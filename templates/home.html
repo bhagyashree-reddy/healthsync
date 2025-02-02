@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block content %}<style>
+  .shadow-darker {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Custom darker shadow */
+  }
+</style>
+<div id="carouselExampleAutoplaying" class="carousel slide mb-6 div1" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <image href="{{ url_for('static', filename='images/c1.jpg') }}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"/>
+        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" opacity="0"/>
+      </svg>
+    </div>
+    <div class="carousel-item">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <image href="{{ url_for('static', filename='images/c2.jpg') }}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"/>
+        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" opacity="0"/>
+      </svg>
+    </div>
+    <div class="carousel-item">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <image href="{{ url_for('static', filename='images/c3.jpg') }}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"/>
+        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" opacity="0"/>
+      </svg>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
+
+
+<!-- About the School Section
+<div class="container-fluid py-5 bg-light">
+  <h2 class="pb-2 mb-4" style="border-bottom: 4px solid maroon;">About the School</h2>
+  
+  Divider with Shadow
+  <div class="container-fluid shadow-lg my-4" style="height: 10px; background-color: #f8f9fa;"></div>
+  
+  Container with Image and Paragraph
+  <div class="container-fluid col-xxl-11 shadow-darker  rounded-4">
+    <div class="row align-items-center">
+      Text Section
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h3 class="fw-bold mb-3">About Us</h3>
+        <p class="lead text-muted">
+          Welcome to our school! We are dedicated to fostering an environment of academic excellence and personal growth. Our dedicated staff and innovative curriculum are designed to prepare students for success in a rapidly changing world. Our state-of-the-art facilities include modern classrooms, well-equipped laboratories, and dedicated spaces for extracurricular activities. We believe in providing our students with the best resources to support their learning and growth.
+        </p>
+      </div>
+      Image Section
+      <div class="col-md-6 d-flex justify-content-center">
+        <img src="{{ url_for('static', filename='images/online.png') }}" class="img-fluid rounded shadow-sm" alt="School Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid my-4">
+  <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 text-center">My School Name</h1>
+</div>
+
+<div class="container-fluid py-5">
+  <div class="container-fluid col-xxl-11 shadow-lg rounded-4 p-4">
+    <div class="row flex-lg-row-reverse align-items-center g-5">
+      <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+        <div class="ratio ratio-16x9">
+          <iframe class="ytvid" src="https://www.youtube.com/embed/qT4nQ_ZKtEs?si=QWs_UQ_aaQtfMNfh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
+        <p class="lead text-muted">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Divider with Shadow -->
+<div class="container-fluid shadow-lg my-4" style="height: 10px; background-color: #f8f9fa;"></div>
+
+<!-- News and Announcements Section -->
+<div class="container-fluid py-5">
+  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">News and Announcements</h2>
+  <div class="row g-4 text-center">
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
+        <img src="{{ url_for('static', filename='images/jan26.png') }}" class="img-fluid rounded mb-3" alt="News Image 1">
+        <h3 class="fw-bold mb-3 mt-auto">Indian Republic Day (January 26) </h3>
+        <p class="lead text-muted">Indian Republic Day commemorates the adoption of the Indian Constitution in 1950, transforming India into a republic. Schools celebrate with vibrant parades, flag hoisting ceremonies, and cultural programs, highlighting the nation's unity and diverse heritage. It's a day of pride and patriotism, reflecting on the country's democratic values. </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
+        <img src="{{ url_for('static', filename='images/aug15.png') }}" class="img-fluid rounded mb-3" alt="News Image 2">
+        <h3 class="fw-bold mb-3 mt-auto"> Indian Independence Day(Aug 15)</h3>
+        <p class="lead text-muted">Independence Day marks India's freedom from British rule in 1947. Schools honor this significant occasion with flag hoisting, speeches, and performances that celebrate India's journey to freedom. It's a day of national pride, reflecting on the sacrifices made for the country's sovereignty and independence..</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
+        <img src="{{ url_for('static', filename='images/nov14.png') }}" class="img-fluid rounded mb-3" alt="News Image 3">
+        <h3 class="fw-bold mb-3 mt-auto">Children's Day (November 14) </h3>
+        <p class="lead text-muted">Children's Day is celebrated on November 14, the birthday of Jawaharlal Nehru, India's first Prime Minister, who was known for his love of children. Schools organize special events and activities to recognize and celebrate the importance of children in society. It's a day dedicated to the well-being and development of children, emphasizing their role as the future of the nation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- School Values and Ethos Section -->
+
+<div class="container-fluid py-5">
+  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Values and Ethos</h2>
+
+  <div class="row text-center"> <!-- Remove align-items-end for even alignment -->
+
+    <!-- Column for Integrity -->
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
+      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <img src="{{ url_for('static', filename='images/online.png') }}" class="img-fluid" alt="Integrity Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+        </div>
+        <h3 class="fw-bold mb-3 mt-auto">Integrity</h3>
+        <p class="lead text-muted">We uphold the highest standards of honesty and accountability in all our actions.</p>
+      </div>
+    </div>
+
+    <!-- Column for Innovation -->
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
+      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <img src="{{ url_for('static', filename='images/6213841.png') }}" class="img-fluid" alt="Innovation Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+        </div>
+        <h3 class="fw-bold mb-3 mt-auto">Innovation</h3>
+        <p class="lead text-muted">We encourage creativity and forward-thinking in all aspects of learning and teaching.</p>
+      </div>
+    </div>
+
+    <!-- Column for Community -->
+    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
+      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <img src="{{ url_for('static', filename='images/comm.png') }}" class="img-fluid" alt="Community Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+        </div>
+        <h3 class="fw-bold mb-3 mt-auto">Community</h3>
+        <p class="lead text-muted">We foster a supportive and collaborative environment where everyone feels valued and included.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+ 
+
+
+
+<!-- <div class="b-example-divider"></div> -->
+<div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
+<div class="container-fluid px-4 py-5" id="icon-grid">
+  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Icon grid</h2>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-trophy" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-school" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-users" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-plane-departure" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-landmark" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-hard-hat" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center">
+    <i class="fas fa-user-md" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+  <div class="col d-flex flex-column align-items-center text-center ">
+    <i class="fas fa-user-tie" style="font-size: 2.75em; color: maroon;"></i>
+    <div class="p-3">
+      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
+      <p>Paragraph of text beneath the heading to explain the heading.</p>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<!-- <div class="container-fluid my-4"></div>
+<h3 class="fw-bold mb-0 fs-4 text-body-emphasis"></h3>
+</div> -->
+
+  <div class="container-fluid px-4 py-5" id="icon-grid">
+    <h2 class="pb-2" style="border-bottom: 4px solid maroon;">My School Location</h2>
+  </div>
+
+<div class="container-fluid px-4 map1">
+  <div id="map-container" class=" map-container" style="height: 300px">
+    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+
+
+{% endblock %}

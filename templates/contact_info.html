@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid div1 mt-3">
+  <h2>SCHOOL NAME </h2>
+  <p>The .table-hover and .table-bordered classes enable hover state and borders on table columns:</p>            
+  <table id="example" class="table table-hover table-bordered">
+    <thead class="table-info">
+        <tr>
+            <th scope="col">first_name</th>    
+            <th scope="col">last_name</th>
+            <th scope="col">email</th>
+            <th scope="col">subject</th>
+            <th scope="col">city</th>
+            <th scope="col">contact_number</th>
+        
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.subject }}</td>
+          <td>{{ user.city }}</td>
+          <td>{{ user.contact_number }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+
+
