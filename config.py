@@ -8,7 +8,7 @@ class Config:
     SESSION_COOKIE_NAME = 'ABD_session'
 
     # SQLAlchemy settings
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'mysql+pymysql://root:1256@localhost/school')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'mysql+pymysql://root:1@localhost/school')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Cache settings

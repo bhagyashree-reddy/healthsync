@@ -22,7 +22,7 @@ def home():
 # Route for the facilities page
 @app.route('/facilities')
 def facilities():
-    return render_template('facilities.html')
+    return render_template('services.html')
 
 # Route for the contact form, handles both GET and POST methods
 @app.route('/contact', methods=['GET', 'POST'])
@@ -241,6 +241,13 @@ def faculty():
 
     return rendered_template
 
+
+
+@app.route('/services',methods=['GET', 'POST'])
+def services():
+    return render_template('facilities.html')
+
+
 # Route for the alumni page
 @app.route('/alumni')
 def alumni():
@@ -319,3 +326,15 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
+
+
+
+
+
+
+
+
+
+
+
+

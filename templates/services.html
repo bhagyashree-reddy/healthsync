@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .container-fluid {
+    max-width: 1400px;  /* You can adjust the width as needed */
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+
+  /* From Uiverse.io by Codecite */ 
+  .btn {
+    --fancy-button-gradient-0: #4CAF50; /* Soft Green */
+    --fancy-button-gradient-50: #8BC34A; /* Lighter Green */
+    --fancy-button-gradient-100: #C5E1A5; /* Soft Light Green */  
+    --fancy-button-inner-shadow-top: rgba(233, 209, 255, 0.2);
+    --fancy-button-inner-shadow-top-lg: rgba(9, 12, 60, 0.1);
+    --fancy-button-inner-shadow-bottom: rgba(137, 222, 246, 0.3);
+    --fancy-button-shine-top: #e9d1ff;
+    --fancy-button-shine-bottom: #adfff9;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 25px;
+    color: #fff;
+    background-image: linear-gradient(
+      to bottom,
+      var(--fancy-button-gradient-0) 0%,
+      var(--fancy-button-gradient-50) 50%,
+      var(--fancy-button-gradient-100) 100%
+    );
+    box-shadow:
+      0px 4px 12px rgba(9, 12, 60, 0.15),
+      0px 2px 8px rgba(9, 12, 60, 0.15),
+      0px 1px 3px var(--fancy-button-inner-shadow-top-lg),
+      inset 0px 1px 1px var(--fancy-button-inner-shadow-top),
+      inset 0px -1px 3px var(--fancy-button-inner-shadow-bottom);
+  }
+
+  .btn:before,
+  .btn:after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    will-change: transform;
+  }
+
+  .btn:before {
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--fancy-button-shine-top);
+    width: 50px;
+    height: 6px;
+    top: -3px;
+    opacity: 0.6;
+    filter: blur(6px);
+    transition: opacity 0.25s;
+  }
+
+  .btn:after {
+    inset: 0;
+    background-size: cover;
+    z-index: 2;
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .btn span {
+    display: block;
+    padding: 12px 24px;
+    border-radius: inherit;
+    overflow: hidden;
+    position: relative;
+    background-image: linear-gradient(
+      to bottom,
+      var(--fancy-button-shine-top),
+      transparent 8px
+    );
+    background-position: 0 -6px;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .btn span:before,
+  .btn span:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--fancy-button-shine-bottom);
+    transition:
+      opacity 0.25s,
+      transform 0.25s;
+    will-change: transform;
+  }
+
+  .btn span:before {
+    width: 50px;
+    height: 8px;
+    bottom: -4px;
+    opacity: 0.75;
+    filter: blur(6px);
+  }
+
+  .btn span:after {
+    width: 60px;
+    height: 1px;
+    bottom: 0;
+    opacity: 0.9;
+    filter: blur(1px);
+  }
+
+  .btn:hover span:before {
+    opacity: 0.8;
+  }
+
+  .btn:hover span:before {
+    transform: translateX(-50%) scale(1.25);
+  }
+
+  .btn:hover span:after {
+    opacity: 1;
+  }
+</style>
+
+<div class="container-fluid mx-5 py-5 mt-5 g-4"> <!-- container with custom margin and padding -->
+  <br>
+  <h2 class="text-center fw-bold border-bottom border-4 border-maroon pb-2">Ayurveda Specialities</h2>
+  <br>
+  
+  <!-- Row 1 -->
+  <div class="row text-center g-4">  <!-- g-4 to add space between columns and rows -->
+    {% set values_row1 = [
+      {"title": "Stress Management", "image": "images/services/STRESS_MANAGEMENT.png"},
+      {"title": "Diabetes_mellitus", "image": "/images/services/DIABETES_MELLITUS.png"},
+      {"title": "Digestive_disorder", "image": "/images/services/DIGESTIVE_DISORDER.png"}
+    ] %}
+    {% for value in values_row1 %}
+    <div class="col-4">
+      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <img src="{{ url_for('static', filename=value.image) }}" class="img-fluid" alt="{{ value.title }} Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+        </div>
+        <h3 class="fw-bold mb-3 mt-auto">{{ value.title }}</h3>
+        <a href="{{ url_for('contact') }}" target="_blank">
+          <button class="btn">
+            <span>Book an appointment</span>
+          </button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+<br>
+  <!-- Row 2 -->
+  <div class="row text-center g-4">  <!-- g-4 to add space between columns and rows -->
+    {% set values_row2 = [
+      {"title": "Hyper_thyroidism", "image": "/images/services/HYPER_THYROIDISM.png"},
+      {"title": "Hypertension", "image": "/images/services/hypertension.png"},
+      {"title": "Osteoarthrities", "image": "/images/services/OSTEOARTHRITIS.png"}
+    ] %}
+    {% for value in values_row2 %}
+    <div class="col-4">
+      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <img src="{{ url_for('static', filename=value.image) }}" class="img-fluid" alt="{{ value.title }} Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+        </div>
+        <h3 class="fw-bold mb-3 mt-auto">{{ value.title }}</h3>
+        <a href="{{ url_for('contact') }}" target="_blank">
+          <button class="btn">
+            <span>Book an appointment</span>
+          </button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+<br>
+  <!-- Row 3 -->
+  <div class="row text-center g-4">  <!-- g-4 to add space between columns and rows -->
+    {% set values_row3 = [
+      {"title": "Rheumatoid_arthrities", "image": "/images/services/RHEUMATOID_ARTHRITIS.png"},
+      {"title": "Pcod", "image": "/images/services/pcod.png"},
+      {"title": "Psoriasis", "image": "/images/services/psoriasis.png"}
+    ] %}
+    {% for value in values_row3 %}
+    <div class="col-4">
+      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
+        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+          <img src="{{ url_for('static', filename=value.image) }}" class="img-fluid" alt="{{ value.title }} Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+        </div>
+        <h3 class="fw-bold mb-3 mt-auto">{{ value.title }}</h3>
+        <a href="{{ url_for('contact') }}" target="_blank">
+          <button class="btn">
+            <span>Book an appointment</span>
+          </button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div> <!-- End of container -->
+
+{% endblock %}
