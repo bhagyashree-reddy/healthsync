@@ -13,8 +13,8 @@ body {
 
 /* navbar */
 #neubar {
-    background: #800000;
-    box-shadow: 4px 6px 12px rgba(179, 105, 105, 0.4)
+    background: transparent;
+    /* box-shadow: 4px 6px 12px rgba(179, 105, 105, 0.4) */
   }
   
   .nav-item .active {
@@ -204,3 +204,69 @@ upload page css  */
 
 
 
+/* Responsive Base Styles */
+body {
+  overflow-x: hidden;
+}
+
+/* Enhanced Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 8%;
+}
+
+/* Value Cards */
+.value-card {
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Service Card Images */
+.service-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .carousel-caption {
+    bottom: 1rem;
+  }
+  
+  .service-card img {
+    height: 200px;
+  }
+  
+  .display-5 {
+    font-size: 1.75rem !important;
+  }
+  
+  .lead {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .carousel-item {
+    height: 60vh;
+  }
+  
+  .service-card {
+    min-height: 400px;
+  }
+}
+
+/* Desktop Enhancements */
+@media (min-width: 1200px) {
+  .carousel-caption h5 {
+    font-size: 2.5rem;
+  }
+  
+  .carousel-caption p {
+    font-size: 1.25rem;
+  }
+}

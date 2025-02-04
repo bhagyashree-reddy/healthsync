@@ -1,62 +1,112 @@
 {% extends "base.html" %}
 
-{% block content %}<style>
+{% block content %}
+<style>
   .shadow-darker {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Custom darker shadow */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Responsive Carousel */
+  .carousel-item {
+    height: 70vh;
+    min-height: 400px;
+    max-height: 800px;
+    overflow: hidden;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .carousel-item {
+      height: 50vh;
+      min-height: 300px;
+    }
+
+    .about-section {
+      padding-top: 1rem !important;
+      margin-top: -1rem !important;
+    }
+
+    .lead {
+      font-size: 1rem;
+    }
+
+    .display-5 {
+      font-size: 2rem !important;
+    }
+
+    .shadow-divider {
+      margin: 1rem 0 !important;
+    }
+  }
+
+  /* Tablet/Desktop Adjustments */
+  @media (min-width: 992px) {
+    .carousel-caption {
+      bottom: 6rem;
+    }
+    
+    .service-card {
+      min-height: 450px;
+    }
   }
 </style>
-<div id="carouselExampleAutoplaying" class="carousel slide mb-6 div1" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <image href="{{ url_for('static', filename='images/c1.jpg') }}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"/>
-        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" opacity="0"/>
-      </svg>
-    </div>
-    <div class="carousel-item">
-      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <image href="{{ url_for('static', filename='images/c2.jpg') }}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"/>
-        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" opacity="0"/>
-      </svg>
-    </div>
-    <div class="carousel-item">
-      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <image href="{{ url_for('static', filename='images/c3.jpg') }}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"/>
-        <rect width="100%" height="100%" fill="var(--bs-secondary-color)" opacity="0"/>
-      </svg>
+
+<!-- Carousel Section -->
+<div class="container-fluid p-0">
+  <div id="clinicCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='images/c3.png') }}" 
+             class="d-block w-70 h-150" 
+             alt="Holistic Healing"
+             loading="lazy">
+        <div class="carousel-caption d-none d-md-block pb-md-5">
+          <h5 class="fs-3">Holistic Healing</h5>
+          <p class="d-none d-lg-block">Experience the power of Ayurveda for complete wellness.</p>
+        </div>
+      </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div> -->
+</div>
 
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#clinicCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#clinicCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
 
-<!-- About the School Section
-<div class="container-fluid py-5 bg-light">
-  <h2 class="pb-2 mb-4" style="border-bottom: 4px solid maroon;">About the School</h2>
+<!-- About the Clinic Section -->
+<div class="container-fluid py-4 bg-light">
+  <h2 class="pb-2 mb-4" style="border-bottom: 2px solid maroon;">About the Clinic</h2>
   
-  Divider with Shadow
-  <div class="container-fluid shadow-lg my-4" style="height: 10px; background-color: #f8f9fa;"></div>
+  <!-- Divider with Shadow -->
+
   
-  Container with Image and Paragraph
-  <div class="container-fluid col-xxl-11 shadow-darker  rounded-4">
+  <!-- Container with Image and Paragraph -->
+  <div class="container-fluid col-xxl-11 shadow-darker rounded-4">
     <div class="row align-items-center">
-      Text Section
+      <!-- Text Section -->
       <div class="col-md-6 mb-4 mb-md-0">
         <h3 class="fw-bold mb-3">About Us</h3>
         <p class="lead text-muted">
-          Welcome to our school! We are dedicated to fostering an environment of academic excellence and personal growth. Our dedicated staff and innovative curriculum are designed to prepare students for success in a rapidly changing world. Our state-of-the-art facilities include modern classrooms, well-equipped laboratories, and dedicated spaces for extracurricular activities. We believe in providing our students with the best resources to support their learning and growth.
+          Welcome to our Ayurvedic clinic! We are dedicated to providing holistic health solutions through the ancient wisdom of Ayurveda. Our experienced practitioners and personalized treatments are designed to promote physical, mental, and spiritual well-being. Our serene environment and state-of-the-art facilities ensure that you receive the best care possible. We believe in the power of natural healing and are committed to helping you achieve optimal health.
         </p>
       </div>
-      Image Section
+      <!-- Image Section -->
       <div class="col-md-6 d-flex justify-content-center">
-        <img src="{{ url_for('static', filename='images/online.png') }}" class="img-fluid rounded shadow-sm" alt="School Image">
+        <img src="{{ url_for('static', filename='images/c1.jpg') }}" class="img-fluid rounded shadow-sm" alt="Clinic Image">
       </div>
     </div>
   </div>
@@ -65,7 +115,7 @@
 
 
 <div class="container-fluid my-4">
-  <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 text-center">My School Name</h1>
+  <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 text-center">Ayurvedic Wellness Center</h1>
 </div>
 
 <div class="container-fluid py-5">
@@ -77,8 +127,8 @@
         </div>
       </div>
       <div class="col-12 col-lg-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
-        <p class="lead text-muted">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Holistic Health and Wellness</h1>
+        <p class="lead text-muted">Discover the ancient science of Ayurveda and how it can transform your life. Our clinic offers a range of treatments and therapies tailored to your unique needs. From detoxification and rejuvenation to stress management and chronic disease treatment, we are here to guide you on your journey to wellness.</p>
       </div>
     </div>
   </div>
@@ -87,163 +137,157 @@
 <!-- Divider with Shadow -->
 <div class="container-fluid shadow-lg my-4" style="height: 10px; background-color: #f8f9fa;"></div>
 
-<!-- News and Announcements Section -->
+<!-- Services Section -->
 <div class="container-fluid py-5">
-  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">News and Announcements</h2>
+  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Services</h2>
   <div class="row g-4 text-center">
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-        <img src="{{ url_for('static', filename='images/jan26.png') }}" class="img-fluid rounded mb-3" alt="News Image 1">
-        <h3 class="fw-bold mb-3 mt-auto">Indian Republic Day (January 26) </h3>
-        <p class="lead text-muted">Indian Republic Day commemorates the adoption of the Indian Constitution in 1950, transforming India into a republic. Schools celebrate with vibrant parades, flag hoisting ceremonies, and cultural programs, highlighting the nation's unity and diverse heritage. It's a day of pride and patriotism, reflecting on the country's democratic values. </p>
+        <img src="{{ url_for('static', filename='images/panchakarma.png') }}" class="img-fluid rounded mb-3" alt="Panchakarma Image">
+        <h3 class="fw-bold mb-3 mt-auto">Panchakarma</h3>
+        <p class="lead text-muted">Panchakarma is a detoxification and rejuvenation therapy that helps remove toxins from the body and restore balance. It includes five primary treatments tailored to your specific needs.</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-        <img src="{{ url_for('static', filename='images/aug15.png') }}" class="img-fluid rounded mb-3" alt="News Image 2">
-        <h3 class="fw-bold mb-3 mt-auto"> Indian Independence Day(Aug 15)</h3>
-        <p class="lead text-muted">Independence Day marks India's freedom from British rule in 1947. Schools honor this significant occasion with flag hoisting, speeches, and performances that celebrate India's journey to freedom. It's a day of national pride, reflecting on the sacrifices made for the country's sovereignty and independence..</p>
+        <img src="{{ url_for('static', filename='images/herbal.png') }}" class="img-fluid rounded mb-3" alt="Herbal Medicine Image">
+        <h3 class="fw-bold mb-3 mt-auto">Herbal Medicine</h3>
+        <p class="lead text-muted">Our herbal medicines are prepared using natural ingredients and traditional methods to treat various health conditions and promote overall well-being.</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-        <img src="{{ url_for('static', filename='images/nov14.png') }}" class="img-fluid rounded mb-3" alt="News Image 3">
-        <h3 class="fw-bold mb-3 mt-auto">Children's Day (November 14) </h3>
-        <p class="lead text-muted">Children's Day is celebrated on November 14, the birthday of Jawaharlal Nehru, India's first Prime Minister, who was known for his love of children. Schools organize special events and activities to recognize and celebrate the importance of children in society. It's a day dedicated to the well-being and development of children, emphasizing their role as the future of the nation.</p>
+        <img src="{{ url_for('static', filename='images/yoga.png') }}" class="img-fluid rounded mb-3" alt="Yoga and Meditation Image">
+        <h3 class="fw-bold mb-3 mt-auto">Yoga and Meditation</h3>
+        <p class="lead text-muted">Yoga and meditation are integral parts of Ayurveda. We offer classes and sessions to help you achieve mental clarity, physical strength, and spiritual growth.</p>
       </div>
     </div>
   </div>
 </div>
 
-
-<!-- School Values and Ethos Section -->
-
+<!-- Our Values and Ethos Section -->
 <div class="container-fluid py-5">
   <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Values and Ethos</h2>
 
-  <div class="row text-center"> <!-- Remove align-items-end for even alignment -->
-
-    <!-- Column for Integrity -->
+  <div class="row text-center">
+    <!-- Column for Holistic Health -->
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
       <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
         <div class="d-flex justify-content-center align-items-center flex-grow-1">
-          <img src="{{ url_for('static', filename='images/online.png') }}" class="img-fluid" alt="Integrity Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+          <img src="{{ url_for('static', filename='images/holistic.png') }}" class="img-fluid" alt="Holistic Health Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
         </div>
-        <h3 class="fw-bold mb-3 mt-auto">Integrity</h3>
-        <p class="lead text-muted">We uphold the highest standards of honesty and accountability in all our actions.</p>
+        <h3 class="fw-bold mb-3 mt-auto">Holistic Health</h3>
+        <p class="lead text-muted">We believe in treating the whole person—body, mind, and spirit—to achieve true wellness.</p>
       </div>
     </div>
 
-    <!-- Column for Innovation -->
+    <!-- Column for Natural Healing -->
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
       <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
         <div class="d-flex justify-content-center align-items-center flex-grow-1">
-          <img src="{{ url_for('static', filename='images/6213841.png') }}" class="img-fluid" alt="Innovation Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+          <img src="{{ url_for('static', filename='images/yoga.png') }}" class="img-fluid" alt="Natural Healing Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
         </div>
-        <h3 class="fw-bold mb-3 mt-auto">Innovation</h3>
-        <p class="lead text-muted">We encourage creativity and forward-thinking in all aspects of learning and teaching.</p>
+        <h3 class="fw-bold mb-3 mt-auto">Natural Healing</h3>
+        <p class="lead text-muted">We use natural remedies and therapies to promote healing and prevent disease.</p>
       </div>
     </div>
 
-    <!-- Column for Community -->
+    <!-- Column for Personalized Care -->
     <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
       <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
         <div class="d-flex justify-content-center align-items-center flex-grow-1">
-          <img src="{{ url_for('static', filename='images/comm.png') }}" class="img-fluid" alt="Community Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
+          <img src="{{ url_for('static', filename='images/personalized.png') }}" class="img-fluid" alt="Personalized Care Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
         </div>
-        <h3 class="fw-bold mb-3 mt-auto">Community</h3>
-        <p class="lead text-muted">We foster a supportive and collaborative environment where everyone feels valued and included.</p>
+        <h3 class="fw-bold mb-3 mt-auto">Personalized Care</h3>
+        <p class="lead text-muted">We provide individualized treatment plans tailored to your unique needs and health goals.</p>
       </div>
     </div>
-
   </div>
 </div>
 
-
- 
-
-
-
-<!-- <div class="b-example-divider"></div> -->
+<!-- Icon Grid Section -->
 <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-<div class="container-fluid px-4 py-5" id="icon-grid">
-  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Icon grid</h2>
-</div>
-
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-trophy" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-school" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-users" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-plane-departure" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-landmark" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-hard-hat" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center">
-    <i class="fas fa-user-md" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-  <div class="col d-flex flex-column align-items-center text-center ">
-    <i class="fas fa-user-tie" style="font-size: 2.75em; color: maroon;"></i>
-    <div class="p-3">
-      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-      <p>Paragraph of text beneath the heading to explain the heading.</p>
-    </div>
-  </div>
-</div>
-
-
-</div>
-
-<!-- <div class="container-fluid my-4"></div>
-<h3 class="fw-bold mb-0 fs-4 text-body-emphasis"></h3>
-</div> -->
-
   <div class="container-fluid px-4 py-5" id="icon-grid">
-    <h2 class="pb-2" style="border-bottom: 4px solid maroon;">My School Location</h2>
+    <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Specializations</h2>
   </div>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+    <div class="col d-flex flex-column align-items-center text-center">
+      <i class="fas fa-spa" style="font-size: 2.75em; color: maroon;"></i>
+      <div class="p-3">
+        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Ayurvedic Spa</h3>
+        <p>Relax and rejuvenate with our Ayurvedic spa treatments designed to restore balance and vitality.</p>
+      </div>
+    </div>
+    <div class="col d-flex flex-column align-items-center text-center">
+      <i class="fas fa-leaf" style="font-size: 2.75em; color: maroon;"></i>
+      <div class="p-3">
+        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Herbal Remedies</h3>
+        <p>Discover the healing power of herbs with our range of natural remedies and supplements.</p>
+      </div>
+    </div>
+    <div class="col d-flex flex-column align-items-center text-center">
+      <i class="fas fa-heartbeat" style="font-size: 2.75em; color: maroon;"></i>
+      <div class="p-3">
+        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Stress Management</h3>
+        <p>Learn techniques to manage stress and improve your overall well-being with our specialized programs.</p>
+      </div>
+    </div>
+    <div class="col d-flex flex-column align-items-center text-center">
+      <i class="fas fa-brain" style="font-size: 2.75em; color: maroon;"></i>
+      <div class="p-3">
+        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Mental Health</h3>
+        <p>Our mental health programs focus on achieving mental clarity and emotional balance through Ayurveda.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Clinic Location Section -->
+<div class="container-fluid px-4 py-5" id="icon-grid">
+  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Location</h2>
+</div>
 
 <div class="container-fluid px-4 map1">
   <div id="map-container" class=" map-container" style="height: 300px">
-    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="https://maps.google.com/maps?q=ayurvedic+clinic&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        
+        function adjustCarouselHeight() {
+            carouselItems.forEach(item => {
+                const img = item.querySelector('img');
+                if (img.complete) {
+                    const aspectRatio = img.naturalWidth / img.naturalHeight;
+                    const containerWidth = item.offsetWidth;
+                    item.style.height = `${containerWidth / aspectRatio}px`;
+                } else {
+                    img.addEventListener('load', function() {
+                        const aspectRatio = img.naturalWidth / img.naturalHeight;
+                        const containerWidth = item.offsetWidth;
+                        item.style.height = `${containerWidth / aspectRatio}px`;
+                    });
+                }
+            });
+        }
+    
+        // Initial adjustment
+        adjustCarouselHeight();
+        
+        // Adjust on window resize
+        window.addEventListener('resize', adjustCarouselHeight);
+        
+        // Adjust when carousel slides (for responsive loading)
+        document.getElementById('clinicCarousel').addEventListener('slid.bs.carousel', adjustCarouselHeight);
+    });
+    </script>
+
+
+
+</div>
 
 
 {% endblock %}
