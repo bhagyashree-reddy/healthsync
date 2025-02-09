@@ -1,293 +1,407 @@
 {% extends "base.html" %}
 
 {% block content %}
-<style>
-  .shadow-darker {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  }
+  <!-- Carousel Section -->
+  <section class="py-5">
+    <div class="container">
+        <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2"></button>
+            </div>
+        
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='images/c3.png')}}" class="d-block w-100" alt="Slide 1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Welcome to Our Ayurvedic Clinic</h5>
+                        <p>Experience the healing power of Ayurveda.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/c1.jpg')}}" class="d-block w-100" alt="Slide 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Natural Treatments</h5>
+                        <p>Holistic wellness with natural remedies.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/c2.jpg')}}" class="d-block w-100" alt="Slide 3">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Personalized Ayurveda</h5>
+                        <p>Customized treatments for your health.</p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+  </section>
 
-  /* Responsive Carousel */
-  .carousel-item {
-    height: 70vh;
-    min-height: 400px;
-    max-height: 800px;
-    overflow: hidden;
-  }
+  <!-- Welcome Section -->
+  <section class="py-5">
+    <div class="container text-center hero-text">
+        <h2 class="mb-4 text-dark">Welcome to ABD Hospital of Ayurveda</h2>
+        <p class="lead">Your journey to holistic wellness begins here. We offer personalized Ayurvedic treatments to restore balance and vitality.</p>
+    </div>
+  </section>
+  <section class="hero-section py-5">
+    <div class="container">
+        <!-- <div class="container text-center">
+            <h2 class="mb-4">Welcome to ABD Hospital of Ayurveda</h2>
+            <p class="lead">Your journey to holistic wellness begins here. We offer personalized Ayurvedic treatments to restore balance and vitality.</p>
+        </div> -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-dark">
+                <p class="hero-text">ABD Ayurveda offers</p>
+                <h1 class="hero-heading text-dark">The best in</h1>
+                <h2 class="highlight-text text-dark">Ayurveda medicines &<br> Ayurveda treatments</h2>
+            </div>
+            <div class="col-md-6">
+                <p class="hero-text text-dark">
+                    ABD Ayurveda is one of the trendsetters in the healthcare sector, taking effective steps to restore Ayurveda 
+                    as the mainstream Health Management System. Nagarjuna has taken immense efforts in the manufacturing of quality 
+                    Ayurvedic medicines, establishing healthcare centers and specialty clinics, conducting deep-rooted research 
+                    in various streams of Ayurveda, and reaching healthcare solutions to the common man through its wide marketing network.
+                </p>
+                <a href="#" class="btn text-dark btn-custom">About us</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-  .carousel-item img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+  <!-- Services Section -->
+  <section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Hover Card 1 -->
+            <div class="col">
+                <div class="card h-100 hover-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-spa fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Panchakarma Therapy</h5>
+                        <p class="card-text">Detoxify and rejuvenate your body with traditional Panchakarma treatments.</p>
+                        <div class="hover-content">
+                            <p>Includes Vamana, Virechana, Basti, Nasya, and Raktamokshana.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hover Card 2 -->
+            <div class="col">
+                <div class="card h-100 hover-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-leaf fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Herbal Medicine</h5>
+                        <p class="card-text">Natural herbal remedies tailored to your health needs.</p>
+                        <div class="hover-content">
+                            <p>We use 100% organic and sustainably sourced herbs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hover Card 3 -->
+            <div class="col">
+                <div class="card h-100 hover-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-heartbeat fa-3x mb-3 text-danger"></i>
+                        <h5 class="card-title">Yoga & Meditation</h5>
+                        <p class="card-text">Improve your physical and mental well-being with guided sessions.</p>
+                        <div class="hover-content">
+                            <p>Daily yoga and meditation classes for all levels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </section>
 
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .carousel-item {
-      height: 50vh;
-      min-height: 300px;
+  <!-- Call-to-Action Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column: Image -->
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='images/AV1.png') }}" alt="Ayurveda Icon" class="img-fluid mb-4" width="350" height="350">
+            </div>
+            <!-- Middle Column: Text and Button -->
+            <div class="col-md-4 text-center">
+                <h2 class="mb-4">Ready to Start Your Healing Journey?</h2>
+                <p class="lead mb-4">Book an appointment today and experience the benefits of Ayurveda.</p>
+                <a href="#" class="btn btn-light btn-lg">Book Now</a>
+            </div>
+            <!-- Right Column: Timings and Holidays -->
+            <div class="col-md-4">
+                <div class="bg-white text-dark p-4 rounded">
+                    <h5 class="mb-3">Appointment Timings</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Monday - Friday:</strong> 9:00 AM - 7:00 PM</li>
+                        <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                    </ul>
+                    <hr>
+                    <h5 class="mb-3">Holidays</h5>
+                    <p>We are closed on public holidays. Please check our website for updates.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+   
+  <!-- Testimonials Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Patients Say</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Testimonial 1 -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/patient1.png') }}" class="rounded-circle mb-3" alt="Patient 1" width="100" height="100">
+                        <blockquote class="blockquote mb-0">
+                            <p>"The Panchakarma treatment transformed my health. I feel rejuvenated and full of energy!"</p>
+                        </blockquote>
+                        <footer class="blockquote-footer mt-3">John Doe</footer>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/patient2.jpg') }}" class="rounded-circle mb-3" alt="Patient 2" width="100" height="100">
+                        <blockquote class="blockquote mb-0">
+                            <p>"The herbal medicines helped me manage my chronic pain naturally. Highly recommended!"</p>
+                        </blockquote>
+                        <footer class="blockquote-footer mt-3">Jane Smith</footer>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/patient3.png') }}" class="rounded-circle mb-3" alt="Patient 3" width="100" height="100">
+                        <blockquote class="blockquote mb-0">
+                            <p>"The yoga sessions have improved my flexibility and reduced my stress levels significantly."</p>
+                        </blockquote>
+                        <footer class="blockquote-footer mt-3">Alice Johnson</footer>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+  <!-- Mission Section -->
+<section class="py-5">
+    <div class="container mission-section p-5">
+        <h2 class="text-center mb-4"><i class="bi bi-heart-pulse me-2"></i>Our Mission</h2>
+        <p class="lead text-center">At HealthCare Hospital, our mission is to provide exceptional healthcare services with compassion and expertise.</p>
+        <!-- Patient Care & Research -->
+<section class="py-5 bg-light">
+  <div class="container">
+      <div class="row g-5">
+          <div class="col-md-6">
+              <div class="p-4">
+                  <h3 class="text-primary"><i class="bi bi-file-medical me-2"></i>Patient Care</h3>
+                  <p>Delivering patient-centered care with empathy and understanding</p>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="p-4">
+                  <h3 class="text-primary"><i class="bi bi-clipboard-data me-2"></i>Research</h3>
+                  <p>Advancing medical knowledge through research and innovation</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+    </div>
+</section>
+
+
+<!-- Core Values -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5"><i class="bi bi-stars me-2"></i>Our Core Values</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card value-card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-heart-fill text-danger fs-1 mb-3"></i>
+                        <h5 class="card-title">Compassion</h5>
+                        <p class="card-text">We treat every patient with kindness, empathy, and respect</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card value-card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-award-fill text-success fs-1 mb-3"></i>
+                        <h5 class="card-title">Excellence</h5>
+                        <p class="card-text">We strive for the highest standards in medical care</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card value-card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people-fill text-info fs-1 mb-3"></i>
+                        <h5 class="card-title">Teamwork</h5>
+                        <p class="card-text">We collaborate to provide comprehensive care solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card value-card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-lightbulb-fill text-warning fs-1 mb-3"></i>
+                        <h5 class="card-title">Innovation</h5>
+                        <p class="card-text">We embrace advanced medical technologies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 
+
+
+<!-- Location Map Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Location</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map-container rounded shadow-sm">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d77.12345678901234!3d12.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzI0LjQiTiA3N8KwMDcnMzYuNiJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom CSS for Hover Cards -->
+  <style>
+    .hover-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .about-section {
-      padding-top: 1rem !important;
-      margin-top: -1rem !important;
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-
-    .lead {
-      font-size: 1rem;
+    .hover-content {
+      display: none;
+      margin-top: 10px;
     }
-
-    .display-5 {
-      font-size: 2rem !important;
-    }
-
-    .shadow-divider {
-      margin: 1rem 0 !important;
-    }
-  }
-
-  /* Tablet/Desktop Adjustments */
-  @media (min-width: 992px) {
-    .carousel-caption {
-      bottom: 6rem;
+    .hover-card:hover .hover-content {
+      display: block;
     }
     
-    .service-card {
-      min-height: 450px;
+    .cta-image {
+        width: 350px; /* Adjust width */
+        height: 350px; /* Adjust height */
+        object-fit: cover; /* Ensures the image scales properly */
     }
-  }
-</style>
 
-<!-- Carousel Section -->
-<div class="container-fluid p-0">
-  <div id="clinicCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ url_for('static', filename='images/c3.png') }}" 
-             class="d-block w-70 h-150" 
-             alt="Holistic Healing"
-             loading="lazy">
-        <div class="carousel-caption d-none d-md-block pb-md-5">
-          <h5 class="fs-3">Holistic Healing</h5>
-          <p class="d-none d-lg-block">Experience the power of Ayurveda for complete wellness.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <!-- Carousel Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#clinicCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#clinicCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-
-<!-- About the Clinic Section -->
-<div class="container-fluid py-4 bg-light">
-  <h2 class="pb-2 mb-4" style="border-bottom: 2px solid maroon;">About the Clinic</h2>
+    .cta-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the card */
+    }
   
-  <!-- Divider with Shadow -->
+    .bg-cover {
+        background-size: cover;
+        background-position: center;
+    }
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
 
-  
-  <!-- Container with Image and Paragraph -->
-  <div class="container-fluid col-xxl-11 shadow-darker rounded-4">
-    <div class="row align-items-center">
-      <!-- Text Section -->
-      <div class="col-md-6 mb-4 mb-md-0">
-        <h3 class="fw-bold mb-3">About Us</h3>
-        <p class="lead text-muted">
-          Welcome to our Ayurvedic clinic! We are dedicated to providing holistic health solutions through the ancient wisdom of Ayurveda. Our experienced practitioners and personalized treatments are designed to promote physical, mental, and spiritual well-being. Our serene environment and state-of-the-art facilities ensure that you receive the best care possible. We believe in the power of natural healing and are committed to helping you achieve optimal health.
-        </p>
-      </div>
-      <!-- Image Section -->
-      <div class="col-md-6 d-flex justify-content-center">
-        <img src="{{ url_for('static', filename='images/c1.jpg') }}" class="img-fluid rounded shadow-sm" alt="Clinic Image">
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container-fluid my-4">
-  <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 text-center">Ayurvedic Wellness Center</h1>
-</div>
-
-<div class="container-fluid py-5">
-  <div class="container-fluid col-xxl-11 shadow-lg rounded-4 p-4">
-    <div class="row flex-lg-row-reverse align-items-center g-5">
-      <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-        <div class="ratio ratio-16x9">
-          <iframe class="ytvid" src="https://www.youtube.com/embed/qT4nQ_ZKtEs?si=QWs_UQ_aaQtfMNfh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="col-12 col-lg-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Holistic Health and Wellness</h1>
-        <p class="lead text-muted">Discover the ancient science of Ayurveda and how it can transform your life. Our clinic offers a range of treatments and therapies tailored to your unique needs. From detoxification and rejuvenation to stress management and chronic disease treatment, we are here to guide you on your journey to wellness.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Divider with Shadow -->
-<div class="container-fluid shadow-lg my-4" style="height: 10px; background-color: #f8f9fa;"></div>
-
-<!-- Services Section -->
-<div class="container-fluid py-5">
-  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Services</h2>
-  <div class="row g-4 text-center">
-    <div class="col-lg-4 col-md-6 col-sm-12">
-      <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-        <img src="{{ url_for('static', filename='images/panchakarma.png') }}" class="img-fluid rounded mb-3" alt="Panchakarma Image">
-        <h3 class="fw-bold mb-3 mt-auto">Panchakarma</h3>
-        <p class="lead text-muted">Panchakarma is a detoxification and rejuvenation therapy that helps remove toxins from the body and restore balance. It includes five primary treatments tailored to your specific needs.</p>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-12">
-      <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-        <img src="{{ url_for('static', filename='images/herbal.png') }}" class="img-fluid rounded mb-3" alt="Herbal Medicine Image">
-        <h3 class="fw-bold mb-3 mt-auto">Herbal Medicine</h3>
-        <p class="lead text-muted">Our herbal medicines are prepared using natural ingredients and traditional methods to treat various health conditions and promote overall well-being.</p>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-12">
-      <div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-        <img src="{{ url_for('static', filename='images/yoga.png') }}" class="img-fluid rounded mb-3" alt="Yoga and Meditation Image">
-        <h3 class="fw-bold mb-3 mt-auto">Yoga and Meditation</h3>
-        <p class="lead text-muted">Yoga and meditation are integral parts of Ayurveda. We offer classes and sessions to help you achieve mental clarity, physical strength, and spiritual growth.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Our Values and Ethos Section -->
-<div class="container-fluid py-5">
-  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Values and Ethos</h2>
-
-  <div class="row text-center">
-    <!-- Column for Holistic Health -->
-    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
-      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
-        <div class="d-flex justify-content-center align-items-center flex-grow-1">
-          <img src="{{ url_for('static', filename='images/holistic.png') }}" class="img-fluid" alt="Holistic Health Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
-        </div>
-        <h3 class="fw-bold mb-3 mt-auto">Holistic Health</h3>
-        <p class="lead text-muted">We believe in treating the whole person—body, mind, and spirit—to achieve true wellness.</p>
-      </div>
-    </div>
-
-    <!-- Column for Natural Healing -->
-    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
-      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
-        <div class="d-flex justify-content-center align-items-center flex-grow-1">
-          <img src="{{ url_for('static', filename='images/yoga.png') }}" class="img-fluid" alt="Natural Healing Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
-        </div>
-        <h3 class="fw-bold mb-3 mt-auto">Natural Healing</h3>
-        <p class="lead text-muted">We use natural remedies and therapies to promote healing and prevent disease.</p>
-      </div>
-    </div>
-
-    <!-- Column for Personalized Care -->
-    <div class="col-lg-4 col-md-4 col-sm-12 d-flex align-items-stretch">
-      <div class="p-3 shadow-lg rounded-5 d-flex flex-column h-100">
-        <div class="d-flex justify-content-center align-items-center flex-grow-1">
-          <img src="{{ url_for('static', filename='images/personalized.png') }}" class="img-fluid" alt="Personalized Care Image" style="max-width: 100%; max-height: 150px; object-fit: contain;">
-        </div>
-        <h3 class="fw-bold mb-3 mt-auto">Personalized Care</h3>
-        <p class="lead text-muted">We provide individualized treatment plans tailored to your unique needs and health goals.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Icon Grid Section -->
-<div class="p-3 shadow-lg rounded-5 h-100 d-flex flex-column">
-  <div class="container-fluid px-4 py-5" id="icon-grid">
-    <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Specializations</h2>
-  </div>
-
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
-    <div class="col d-flex flex-column align-items-center text-center">
-      <i class="fas fa-spa" style="font-size: 2.75em; color: maroon;"></i>
-      <div class="p-3">
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Ayurvedic Spa</h3>
-        <p>Relax and rejuvenate with our Ayurvedic spa treatments designed to restore balance and vitality.</p>
-      </div>
-    </div>
-    <div class="col d-flex flex-column align-items-center text-center">
-      <i class="fas fa-leaf" style="font-size: 2.75em; color: maroon;"></i>
-      <div class="p-3">
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Herbal Remedies</h3>
-        <p>Discover the healing power of herbs with our range of natural remedies and supplements.</p>
-      </div>
-    </div>
-    <div class="col d-flex flex-column align-items-center text-center">
-      <i class="fas fa-heartbeat" style="font-size: 2.75em; color: maroon;"></i>
-      <div class="p-3">
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Stress Management</h3>
-        <p>Learn techniques to manage stress and improve your overall well-being with our specialized programs.</p>
-      </div>
-    </div>
-    <div class="col d-flex flex-column align-items-center text-center">
-      <i class="fas fa-brain" style="font-size: 2.75em; color: maroon;"></i>
-      <div class="p-3">
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Mental Health</h3>
-        <p>Our mental health programs focus on achieving mental clarity and emotional balance through Ayurveda.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Clinic Location Section -->
-<div class="container-fluid px-4 py-5" id="icon-grid">
-  <h2 class="pb-2" style="border-bottom: 4px solid maroon;">Our Location</h2>
-</div>
-
-<div class="container-fluid px-4 map1">
-  <div id="map-container" class=" map-container" style="height: 300px">
-    <iframe src="https://maps.google.com/maps?q=ayurvedic+clinic&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        
-        function adjustCarouselHeight() {
-            carouselItems.forEach(item => {
-                const img = item.querySelector('img');
-                if (img.complete) {
-                    const aspectRatio = img.naturalWidth / img.naturalHeight;
-                    const containerWidth = item.offsetWidth;
-                    item.style.height = `${containerWidth / aspectRatio}px`;
-                } else {
-                    img.addEventListener('load', function() {
-                        const aspectRatio = img.naturalWidth / img.naturalHeight;
-                        const containerWidth = item.offsetWidth;
-                        item.style.height = `${containerWidth / aspectRatio}px`;
-                    });
-                }
-            });
+    .hero-section {
+            background-color: #e3f2fd; /* Green background */
+            color: white;
+            padding: 60px 0;
         }
-    
-        // Initial adjustment
-        adjustCarouselHeight();
+        .hero-text {
+            font-size: 1.2rem;
+        }
+        .hero-heading {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        .highlight-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
         
-        // Adjust on window resize
-        window.addEventListener('resize', adjustCarouselHeight);
         
-        // Adjust when carousel slides (for responsive loading)
-        document.getElementById('clinicCarousel').addEventListener('slid.bs.carousel', adjustCarouselHeight);
-    });
-    </script>
+        .btn-custom {
+            border: 2px solid rgb(7, 7, 7);
+            color: rgb(9, 9, 9);
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-transform: capitalize;
+        }
+        .btn-custom:hover {
+            background-color: white;
+            color: #008000;
+        }
+        .map-container {
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
 
+.map-container iframe {
+    border: 0;
+    width: 100%;
+    height: 400px;
+}
+.bg-primary {
+    background-color: #3c3c3c !important;
+}
 
+.mission-section {
+            background-color: #e3f2fd;
+            border-radius: 15px;
+        }
+        .value-card {
+            transition: transform 0.3s;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
 
-</div>
-
-
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  
 {% endblock %}

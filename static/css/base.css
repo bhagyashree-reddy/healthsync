@@ -1,272 +1,135 @@
-
-
-.div1{
-    padding-top: 87px;
+/***************************
+    CUSTOM SCROLL BAR
+****************************/
+*, html {
+  scroll-behavior: smooth;
+}
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:root {
+  --white: #FFF;
+  --black: #232323;
+  --lite: rgba(255, 255, 255, 0.6);
+  --gray: rgba(1, 1, 1, 0.6);
+  --dark: #3c3d3c;
+  --primary: linear-gradient(145deg, #ff2f09, #c24a4e);
+  --primary_dark: #970104;
+  --primary_lite: #c24a4e;
+  --secondary: #000a17;
+  --default_font: 'Ysabeau Infant', sans-serif;
+  --title_font: 'Outfit', sans-serif;
 }
 
+/***************************
+          DEFAULT
+****************************/
 body {
+  margin: 0;
+  overflow-x: hidden !important;
+  font-family: var(--default_font);
+  background-color: var(--dark);
+  color: var(--lite);
+}
+
+header {
+  position: relative;
+  z-index: 10; /* Ensure header stays above other content */
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1; /* Ensure slider doesn't overlap other sections */
+}
+
+.slider ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.slider li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: clip .7s ease-in-out, z-index 0s .7s;
+  clip: rect(0, 100vw, 100vh, 100vw);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-/* navbar */
-#neubar {
-    background: transparent;
-    /* box-shadow: 4px 6px 12px rgba(179, 105, 105, 0.4) */
-  }
-  
-  .nav-item .active {
-    border-radius: 6px;
-    background: linear-gradient(145deg, #ffe7ca, #f5d7b2);
-    box-shadow:  #ffe7ca;
-  }
-  #neubar .dropdown-menu a:hover {
-    color: #800000
-  }
-  #neubar .nav-item {
-    margin : auto 4px;
-  }
-  #neubar a {
-  
-    padding-left:12px;
-    padding-right:12px;
-  }
-  #neubar .dropdown-menu {
-    background : #ffe7ca
-  }
-  a.navbar-brand {
-    color: #454545
-  }
-
-
-
-
-  .ytvid{
-    border-radius: 4%;
-  }
-
-
-
-  /* footer */
-  .fi{
-    text-decoration: none;
-    padding: 10px;
-    background-color: #ffe7ca;
-    margin: 10px;
-    border-radius: 38%;
-    color: black;
-  }
-      
-  .ft{
-    background-color: black;
-    color: black;
-  }
-
-  .ftbg{
-    background: #800000;
-    margin-top: auto;
-  }
-
-  .b-example-divider {
-    
-    width: 100%;
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+.slider li:nth-child(1) {
+  background-image: url("/static/images/slider-1.jpg");
+}
+.slider li:nth-child(2) {
+  background-image: url("/static/images/slider-2.jpg");
+}
+.slider li:nth-child(3) {
+  background-image: url("/static/images/slider-3.jpg");
 }
 
-
-
-/* Carousel */
-
-.carousel {
-  margin-bottom: 4rem;
+.slider article {
+  text-align: center;
+  color: var(--white);
+  z-index: 2; /* Ensure text is above the background */
 }
 
-
-.carousel-item {
-  height: 38.7rem;
+.cs-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: var(--white);
+  cursor: pointer;
+  z-index: 10;
 }
 
-  
-  
-
-
-/* map */
-  
-.map-container{
-  overflow:hidden;
-  position:relative;
-  height:0;
-  border-radius: 1%;
-  
-  }
- .map1{
-  padding-bottom: 20px;
- }
-  .map-container iframe{
-  left:0;
-  top:0;
-  height:100%;
-  width:100%;
-  position:absolute;
-  }
-
-
-  /* gallery */
-
-.gallery-item img {
-    transition: transform 0.3s ease;
+main {
+  position: relative;
+  z-index: 1; /* Ensure main content doesn't overlap with the header */
+  margin-top: -100px; /* Adjust this value to avoid overlap */
+  padding: 2rem;
+  background-color: var(--dark);
 }
 
-.gallery-item img:hover {
-    transform: scale(1.05);
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.page-link.btn-warning {
-background-color: #ffc107; /* Bootstrap warning color */
-border-color: #ffc107; /* Ensure the border matches the button color */
-color: black;
-}
-
-
-/* Featurettes */
-
-.featurette-divider {
-  margin: 5rem 0; 
-}
-
-.featurette-heading {
-  letter-spacing: -.05rem;
-}
-
-
-@media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
-  }
-}
-
-
-/* Login page 
-
-.divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
-}
-.h-custom {
-height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
-}
-} */
-/* admin page  */
-.btn-warning:hover {
-  background-color: #102770; /* Dark background on hover */
-  color: #ffeba7; /* Yellow text color on hover */
-}
-
-.form-control {
-  height: 50px; /* Adjusted height for inputs */
-  font-size: 16px; /* Larger font size for better readability */
-}
-
-.form-control-lg {
-  height: 60px; /* Larger height for text inputs */
-  font-size: 18px; /* Larger font size */
-}
-
-/* 
-
-upload page css  */
-
-
-.upload-button-container {
+.therapy-list {
   display: flex;
-  justify-content: flex-end; /* Aligns buttons to the right */
-  gap: 10px; /* Adds space between buttons */
-  margin-bottom: 1rem; /* Adds space below the buttons */
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.upload-button-container .btn {
-  margin-bottom: 0; /* Removes default margin-bottom */
+.therapy-item {
+  flex: 1 1 calc(33.33% - 2rem);
+  background-color: var(--dark);
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  color: var(--lite);
 }
 
-
-
-
-/* Responsive Base Styles */
-body {
-  overflow-x: hidden;
-}
-
-/* Enhanced Carousel Controls */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 8%;
-}
-
-/* Value Cards */
-.value-card {
-  transition: transform 0.3s ease;
-}
-
-.value-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Service Card Images */
-.service-card img {
-  height: 250px;
-  object-fit: cover;
-}
-
-/* Mobile Optimization */
-@media (max-width: 768px) {
-  .carousel-caption {
-    bottom: 1rem;
-  }
-  
-  .service-card img {
-    height: 200px;
-  }
-  
-  .display-5 {
-    font-size: 1.75rem !important;
-  }
-  
-  .lead {
-    font-size: 0.95rem;
-  }
-}
-
-/* Tablet Optimization */
-@media (min-width: 769px) and (max-width: 1199px) {
-  .carousel-item {
-    height: 60vh;
-  }
-  
-  .service-card {
-    min-height: 400px;
-  }
-}
-
-/* Desktop Enhancements */
-@media (min-width: 1200px) {
-  .carousel-caption h5 {
-    font-size: 2.5rem;
-  }
-  
-  .carousel-caption p {
-    font-size: 1.25rem;
+@media (max-width: 920px) {
+  .therapy-item {
+      flex: 1 1 100%;
   }
 }
