@@ -1,53 +1,32 @@
 from app import db
 from flask_login import UserMixin
+from datetime import datetime
+
+
+# class Contact(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     first_name = db.Column(db.String(50), nullable=False)
+#     last_name = db.Column(db.String(50), nullable=False)
+#     email = db.Column(db.String(100), nullable=False)
+#     subject = db.Column(db.String(100), nullable=False)
+#     contact_number = db.Column(db.String(15), nullable=False)
+#     city = db.Column(db.String(50))
+
+#     def __repr__(self):
+#         return f'<Contact {self.first_name} {self.last_name}>'
+
+
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
-    subject = db.Column(db.String(100), nullable=False)
-    contact_number = db.Column(db.String(15), nullable=False)
-    city = db.Column(db.String(50))
-
-    def __repr__(self):
-        return f'<Contact {self.first_name} {self.last_name}>'
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    phone = db.Column(db.String(20))
+    subject = db.Column(db.String(200), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    is_read = db.Column(db.Boolean, default=False)
     
-
-
-class Event(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    image_name = db.Column(db.String(255), nullable=False)
-    image_data = db.Column(db.LargeBinary(length=(2**32)-1), nullable=False)
-    description = db.Column(db.String(500), nullable=False)
-
-    def __repr__(self):
-        return f"<Event {self.image_name}>"
-
-    def __init__(self, image_name, image_data, description):
-        self.image_name = image_name
-        self.image_data = image_data
-        self.description = description
-
-
-class Faculty(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    image_name = db.Column(db.String(255), nullable=False)
-    image_data = db.Column(db.LargeBinary, nullable=False)
-    name = db.Column(db.String(100),unique=True, nullable=False)
-    designation = db.Column(db.String(100), nullable=False)  # Add this line
-    qualification=db.Column(db.String(100), nullable=False) 
-    age = db.Column(db.Integer, nullable=False)
-    experience = db.Column(db.Integer, nullable=False)
-
-    def __init__(self, image_name, image_data, name, designation,qualification, age, experience):
-        self.image_name = image_name
-        self.image_data = image_data
-        self.name = name
-        self.designation = designation
-        self.qualification=qualification
-        self.age = age
-        self.experience = experience
 
 class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -66,5 +45,29 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f'<user : {self.username}>'
+
+
+class Service(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    amount = db.Column(db.Float, nullable=False)
+    image_name = db.Column(db.String(255), nullable=True)  # Store image filename
+    image_data = db.Column(db.LargeBinary(length=(2**32)-1), nullable=True)  # Store image data as binary
+ # Store filename  # Path to the image
+
+
+class Appointment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100), nullable=False)
+    service_name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(100))
+    contact_number = db.Column(db.String(20), nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    amount = db.Column(db.Float, nullable=False)
+
+
 
 

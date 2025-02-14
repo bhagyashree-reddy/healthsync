@@ -2,14 +2,15 @@
 
 {% block content %}
 
-<div class="bg-light text-dark div1">
-
-  <div class="container mt-5 upload-container mb-4">
+<div class="container mt-5">
+  <div class="bg-light text-dark p-4 rounded shadow">
+    
+    <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
     <div class="alert-container">
       {% for category, message in messages %}
-      <div class="alert alert-{{ category }} alert-dismissible fade show upload-flash" role="alert">
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
         {{ message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -19,109 +20,64 @@
     {% endwith %}
 
     <!-- Buttons Container -->
-    <div class="upload-button-container">
-      <form action="{{ url_for('contacts') }}" method="POST" class="mb-2">
-        <button type="submit" class="btn btn-warning px-5">Contact Information</button>
+    <div class="d-flex justify-content-center gap-3 mb-4">
+      <form action="{{ url_for('contacts') }}" method="POST">
+        <button type="submit" class="btn btn-warning px-4 py-2 fw-bold">Contact Information</button>
       </form>
-    
+
       <form action="{{ url_for('logout') }}" method="POST">
-        <button type="submit" class="btn btn-warning px-5">Logout</button>
+        <button type="submit" class="btn btn-danger px-4 py-2 fw-bold">Logout</button>
       </form>
     </div>
 
-    <h1 class="text-center mb-4">Admin Page</h1>
+    <h1 class="text-center mb-4 text-primary">Admin Page</h1>
 
-    <!-- Image Upload Form for Gallery-->
+    <!-- Image Upload Form for Gallery -->
     <div class="mb-5">
-      <h2 class="text-center mb-4">Upload Images for Gallery</h2>
-      <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+      <h2 class="text-center text-secondary">Upload Images for Gallery</h2>
+      <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-white shadow">
         <div class="mb-3">
-          <label for="image_upload" class="form-label">Select Images:</label>
-          <input type="file" id="image_upload" name="images" class="form-control" accept="image/*" multiple>
+          <label for="image_upload" class="form-label fw-bold">Select Images:</label>
+          <input type="file" id="image_upload" name="images" class="form-control" accept="image/*" multiple required>
         </div>
-        <button type="submit" class="btn btn-warning px-5">Upload Images</button>
+        <div class="text-center">
+          <button type="submit" class="btn btn-warning px-5">Upload Images</button>
+        </div>
       </form>
     </div>
 
-    <!-- Image and Text Upload Form for Event Page-->
-    <div class="container">
-      <h2 class="text-center mb-4">Upload Image and Text for Event Page</h2>
-      <form action="{{ url_for('event_upload') }}" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="image" class="form-label">Select Image:</label>
-          <input type="file" id="image" name="image" class="form-control" accept="image/*">
-        </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Enter Text:</label>
-          <input type="text" id="description" name="description" class="form-control"
-            placeholder="Enter your text here">
-        </div>
-        <button type="submit" class="btn btn-warning px-5">Upload Image and Text</button>
-      </form>
-    </div>
+    <!-- Service Upload Form -->
+    <div class="mb-5">
+      <h2 class="text-center text-secondary">Upload Service Information</h2>
 
-    <!-- Image and Text Upload Form for Faculty Page-->
-    <div class="container">
-      <h2 class="text-center mb-4">Upload Image and Text for Faculty Page</h2>
-      <form action="{{ url_for('faculty_upload') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ url_for('service_upload') }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-white shadow">
         <div class="mb-3">
-          <label for="faculty_name" class="form-label">Faculty Name:</label>
-          <input type="text" id="faculty_name" name="faculty_name" class="form-control"
-            placeholder="Enter faculty name">
-        </div>
-        <div class="mb-3">
-          <label for="designation" class="form-label">Designation:</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="faculty_designation" id="principal" value="Principal"
-              required>
-            <label class="form-check-label" for="principal">Principal</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="faculty_designation" id="vice_principal"
-              value="Vice Principal" required>
-            <label class="form-check-label" for="vice_principal">Vice Principal</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="faculty_designation" id="administrator"
-              value="Administrator" required>
-            <label class="form-check-label" for="administrator">Administrator</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="faculty_designation" id="professor" value="Professor"
-              required>
-            <label class="form-check-label" for="professor">Professor</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="faculty_designation" id="assistant_professor"
-              value="Assistant Professor" required>
-            <label class="form-check-label" for="assistant_professor">Assistant Professor</label>
-          </div>
+          <label for="title" class="form-label fw-bold">Service Title:</label>
+          <input type="text" name="title" class="form-control" required>
         </div>
 
         <div class="mb-3">
-          <label for="faculty_age" class="form-label">Faculty Age:</label>
-          <input type="number" id="faculty_age" name="faculty_age" class="form-control" placeholder="Enter faculty age">
+          <label for="description" class="form-label fw-bold">Description:</label>
+          <textarea name="description" class="form-control" rows="4" required></textarea>
         </div>
+
         <div class="mb-3">
-          <label for="faculty_experience" class="form-label">Years of Experience:</label>
-          <input type="number" id="faculty_experience" name="faculty_experience" class="form-control"
-            placeholder="Enter years of experience">
+          <label for="amount" class="form-label fw-bold">Amount:</label>
+          <input type="number" step="0.01" name="amount" class="form-control" required>
         </div>
+
         <div class="mb-3">
-          <label for="faculty_qualification" class="form-label">Qualification:</label>
-          <input type="text" id="faculty_qualification" name="faculty_qualification" class="form-control"
-            placeholder="Enter Qualification">
+          <label for="image" class="form-label fw-bold">Upload Image:</label>
+          <input type="file" name="image" class="form-control" accept="image/*" required>
         </div>
-        <div class="mb-3">
-          <label for="faculty_image" class="form-label">Select Image:</label>
-          <input type="file" id="faculty_image" name="faculty_image" class="form-control" accept="image/*">
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-success px-5">Upload Service</button>
         </div>
-        <button type="submit" class="btn btn-warning px-5">Upload Faculty Information</button>
       </form>
     </div>
+
   </div>
-
-  <!-- Bootstrap JS (Optional) -->
-  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> -->
 </div>
+
 {% endblock %}

@@ -5,9 +5,7 @@ from markupsafe import Markup
 from app import app, db, login_manager, cache
 from models import *
 from sqlalchemy.exc import SQLAlchemyError  # Import SQLAlchemyError
-from werkzeug.utils import secure_filename
-import os
-from flask import jsonify
+
 import base64
 import json
 
@@ -21,29 +19,83 @@ def b64encode_filter(data):
 def home():
     return render_template('home.html')
 
+# Route for the facilities page
+# @app.route('/facilities')
+# def facilities():
+#     return render_template('services.html')
+
+
+
 
 
 # Route for the contact form, handles both GET and POST methods
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        # Retrieve form data
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        email = request.form.get('email')
+        subject = request.form.get('subject')
+        contact_number = request.form.get('contact_number')
+        city = request.form.get('city', '')
+
+        # Simple form validation
+        if not first_name or not last_name or not email or not subject:
+            flash('All fields are required!', 'danger')
+            return redirect(url_for('contact'))
+
+        if not (contact_number.isdigit() and len(contact_number) == 10):
+            flash('Contact number must be exactly 10 digits!', 'danger')
+            return redirect(url_for('contact'))
+
+        # Create a new contact entry
+        try:
+            contact = Contact(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                subject=subject,
+                contact_number=contact_number,
+                city=city
+            )
+            db.session.add(contact)
+            db.session.commit()
+            flash('Form submitted successfully!', 'success')
+            return redirect(url_for('contact'))
+        except SQLAlchemyError as e:
+            print(f"Error saving contact: {e}")
+            db.session.rollback()
+            flash('An error occurred while processing your request. Please try again later.', 'danger')
+
+    return render_template('contact.html')
+
+
+
 # @app.route('/contact', methods=['GET', 'POST'])
 # def contact():
+#     # Retrieve service name from query parameters
+#     name = request.args.get('service_name', '')
+#     # Fetch service from the database based on the service_name
+#     service = Service.query.filter_by(title=name).first()
+#     # Check if the service exists, and if so, fetch the amount and title
+#     service_name = service.title if service else "not found"
+#     service_amount = service.amount if service else "not found"
 #     if request.method == 'POST':
 #         # Retrieve form data
 #         first_name = request.form.get('first_name')
 #         last_name = request.form.get('last_name')
 #         email = request.form.get('email')
-#         subject = request.form.get('subject')
+#         subject = request.form.get('subject')  # This is the service name passed from the URL
 #         contact_number = request.form.get('contact_number')
 #         city = request.form.get('city', '')
-
 #         # Simple form validation
 #         if not first_name or not last_name or not email or not subject:
 #             flash('All fields are required!', 'danger')
-#             return redirect(url_for('contact'))
-
+#             return redirect(url_for('contact', service_name=service_name))
 #         if not (contact_number.isdigit() and len(contact_number) == 10):
 #             flash('Contact number must be exactly 10 digits!', 'danger')
-#             return redirect(url_for('contact'))
-
+#             return redirect(url_for('contact', service_name=service_name))
 #         # Create a new contact entry
 #         try:
 #             contact = Contact(
@@ -57,30 +109,13 @@ def home():
 #             db.session.add(contact)
 #             db.session.commit()
 #             flash('Form submitted successfully!', 'success')
-#             return redirect(url_for('contact'))
+#             # Redirect to the appointments page
+#             return redirect(url_for('home'))
 #         except SQLAlchemyError as e:
 #             print(f"Error saving contact: {e}")
 #             db.session.rollback()
 #             flash('An error occurred while processing your request. Please try again later.', 'danger')
-
-#     return render_template('contact.html')
-
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    if request.method == 'POST':
-        contact = Contact(
-            name=request.form.get('name'),
-            email=request.form.get('email'),
-            phone=request.form.get('phone'),
-            subject=request.form.get('subject'),
-            message=request.form.get('message')
-        )
-        db.session.add(contact)
-        db.session.commit()
-        flash('Your message has been sent successfully!', 'success')
-        return redirect(url_for('contact'))
-    return render_template('contact.html')
-
+#     return render_template('contact.html', service_name=service_name, service_amount=service_amount)
 
 
 # Route to view contact information, requires user to be logged in
@@ -94,45 +129,35 @@ def contacts():
 @app.route('/services')
 def services():
     all_services = Service.query.all()
-
-    # Convert image binary data to Base64
-    for service in all_services:
-        if service.image_data:
-            service.image_base64 = base64.b64encode(service.image_data).decode('utf-8')
-
     return render_template('services.html', services=all_services)
 
+from flask import jsonify
 
 @app.route('/book_appointment', methods=['POST'])
 def book_appointment():
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
-    service_name = request.form.get('service_name')  # This is the service name
+    subject = request.form.get('subject')  # This is the service name
     email = request.form.get('email')
     city = request.form.get('city')
     contact_number = request.form.get('contact_number')
-    amount = request.form.get('amount')  # Get the amount
 
     # Validate input
-    if not first_name or not last_name or not service_name  or not email or not contact_number or not amount:
+    if not first_name or not last_name or not subject or not email or not contact_number:
         return jsonify({'status': 'error', 'message': 'All fields are required!'})
 
     if not (contact_number.isdigit() and len(contact_number) == 10):
         return jsonify({'status': 'error', 'message': 'Contact number must be exactly 10 digits!'})
-
-    # if not amount.isdigit():
-    #     return jsonify({'status': 'error', 'message': 'Amount must be a valid number!'})
 
     # Save appointment
     try:
         new_appointment = Appointment(
             first_name=first_name,
             last_name=last_name,
-            service_name=service_name,
+            service_name=subject,
             email=email,
             city=city,
-            contact_number=contact_number,
-            amount=float(amount)  # Store amount as a float
+            contact_number=contact_number
         )
         db.session.add(new_appointment)
         db.session.commit()
@@ -148,16 +173,11 @@ def book_appointment():
                 'email': a.email,
                 'city': a.city,
                 'contact_number': a.contact_number,
-                'amount': a.amount,  # Include amount in the response
                 'created_at': a.created_at.strftime('%Y-%m-%d %H:%M:%S')
             } for a in appointments
         ]
 
         return jsonify({'status': 'success', 'message': 'Appointment booked successfully!', 'appointments': appointments_data})
-
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({'status': 'error', 'message': f'Error booking appointment: {e}'})
 
     except Exception as e:
         db.session.rollback()
@@ -199,7 +219,15 @@ def upload():
 
     return render_template('upload.html')
 
-
+@app.route('/delete_event_image/<int:id>', methods=['POST'])
+@login_required
+def delete_event_image(id):
+    print(f"Delete request received for id: {id}")
+    event = Event.query.get_or_404(id)
+    db.session.delete(event)
+    db.session.commit()
+    # flash('Event deleted successfully.', 'success')
+    return redirect(url_for('event'))
 
 
 @app.route('/delete_gallery_image/<int:id>', methods=['POST'])
@@ -214,7 +242,15 @@ def delete_gallery_image(id):
 
 
 
-
+@app.route('/delete_faculty_image/<int:id>', methods=['POST'])
+@login_required
+def delete_faculty_image(id):
+    print(f"Delete request received for id: {id}")
+    event = Faculty.query.get_or_404(id)
+    db.session.delete(event)
+    db.session.commit()
+    # flash('Event deleted successfully.', 'success')
+    return redirect(url_for('faculty'))
 
 # Route for the gallery page with pagination and image base64 encoding
 @app.route('/gallery')
@@ -253,50 +289,62 @@ def delete_image():
     return redirect(url_for('upload'))
 
 # Route for event image and description upload, requires user to be logged in
-
-
-@app.route('/service-upload', methods=['GET', 'POST'])
+@app.route('/event-upload', methods=['GET', 'POST'])
 @login_required
-def service_upload():
+def event_upload():
     if request.method == 'POST':
-        title = request.form.get('title')
-        description = request.form.get('description')
-        amount = request.form.get('amount')
         image_file = request.files.get('image')
+        description = request.form.get('description')
 
-        if not title or not description or not amount or not image_file:
-            flash('All fields are required!', 'danger')
-            return redirect(url_for('service_upload'))
+        if image_file and description:
+            image_name = image_file.filename
+            image_data = image_file.read()
 
-        if not amount.isdigit():
-            flash('Amount must be a number!', 'danger')
-            return redirect(url_for('service_upload'))
-
-        # Read image data
-        image_filename = secure_filename(image_file.filename)  # Secure filename
-        image_data = image_file.read()  # Read binary data
-
-        # Save service details in the database
-        new_service = Service(
-            title=title,
-            description=description,
-            amount=float(amount),
-            image_name=image_filename,  # Save filename
-            image_data=image_data  # Save binary data
-        )
-
-        try:
-            db.session.add(new_service)
-            db.session.commit()
-            flash('Service uploaded successfully!', 'success')
-            return redirect(url_for('service_upload'))
-        except Exception as e:
-            db.session.rollback()
-            flash(f'An error occurred: {e}', 'danger')
-
+            new_event = Event(image_name=image_name, image_data=image_data, description=description)
+            try:
+                db.session.add(new_event)
+                db.session.commit()
+                flash('Image and text uploaded successfully!', 'success')
+                return redirect(url_for('event_upload'))
+            except Exception as e:
+                db.session.rollback()
+                flash(f'An error occurred: {e}', 'danger')
+        else:
+            flash('Please provide both image and description.', 'danger')
     return render_template('upload.html')
 
 
+
+# @app.route('/services',methods=['GET', 'POST'])
+# def services():
+#     return render_template('facilities.html')
+
+
+# Define your services
+# services_list = [
+#     {"service_name":"Stress_Management","title": "Stress Management", "image": "images/services/STRESS_MANAGEMENT.png"},
+#     {"service_name":"Diabetes_Mellitus","title": "Diabetes Mellitus", "image": "images/services/DIABETES_MELLITUS.png"},
+#     {"service_name":"Digestive_Disorder","title": "Digestive Disorder", "image": "images/services/DIGESTIVE_DISORDER.png"},
+#     {"service_name":"Hyperthyroidism","title": "Hyperthyroidism", "image": "images/services/HYPER_THYROIDISM.png"},
+#     {"service_name":"Hypertension","title": "Hypertension", "image": "images/services/hypertension.png"},
+#     {"service_name":"Osteoarthritis","title": "Osteoarthritis", "image": "images/services/OSTEOARTHRITIS.png"},
+#     {"service_name":"Rheumatoid_Arthritis","title": "Rheumatoid Arthritis", "image": "images/services/RHEUMATOID_ARTHRITIS.png"},
+#     {"service_name":"PCOD","title": "PCOD", "image": "images/services/pcod.png"},
+#     {"service_name":"Psoriasis","title": "Psoriasis", "image": "images/services/psoriasis.png"},
+# ]
+# @app.route('/services',methods=['GET', 'POST'])
+# def services():
+#     # per_page = 3  # Number of services per page
+#     # page = request.args.get('page', 1, type=int)
+    
+#     # # Calculate start and end indices
+#     # start = (page - 1) * per_page
+#     # end = start + per_page
+#     # paginated_services = services[start:end]
+    
+#     # total_pages = -(-len(services) // per_page)  # Ceiling division
+    
+#     return render_template("services.html",services=services_list)
 
 
 
