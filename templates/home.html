@@ -227,13 +227,12 @@
 </section>
    
   <!-- Testimonials Section -->
-<section class="py-5 bg-light">
+<section class="py-5">
     <div class="container">
-        <h2 class="text-center mb-5">What Our Patients Say</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Testimonial 1 -->
-            <div class="col">
-                <div class="card h-100 text-center">
+      <h2 class="text-center mb-4">What Our Patients Say</h2>
+      <div class="scrollable-container" id="testimonial-container">
+
+                <div class="col testimonial-card card h-100 text-center">
                     <div class="card-body">
                         <img src="{{ url_for('static', filename='images/patient1.png') }}" class="rounded-circle mb-3" alt="Patient 1" width="100" height="100">
                         <blockquote class="blockquote mb-0">
@@ -242,10 +241,8 @@
                         <footer class="blockquote-footer mt-3">John Doe</footer>
                     </div>
                 </div>
-            </div>
-            <!-- Testimonial 2 -->
-            <div class="col">
-                <div class="card h-100 text-center">
+
+                <div class="testimonial-card card h-100 text-center">
                     <div class="card-body">
                         <img src="{{ url_for('static', filename='images/patient2.jpg') }}" class="rounded-circle mb-3" alt="Patient 2" width="100" height="100">
                         <blockquote class="blockquote mb-0">
@@ -254,23 +251,51 @@
                         <footer class="blockquote-footer mt-3">Jane Smith</footer>
                     </div>
                 </div>
-            </div>
-            <!-- Testimonial 3 -->
-            <div class="col">
-                <div class="card h-100 text-center">
+
+                <div class="testimonial-card card h-100 text-center">
                     <div class="card-body">
                         <img src="{{ url_for('static', filename='images/patient3.png') }}" class="rounded-circle mb-3" alt="Patient 3" width="100" height="100">
                         <blockquote class="blockquote mb-0">
-                            <p>"The yoga sessions have improved my flexibility and reduced my stress levels significantly."</p>
+                            <p>"The Ayurvedic detox completely revitalized my well-being. I feel refreshed and energized"</p>
                         </blockquote>
                         <footer class="blockquote-footer mt-3">Alice Johnson</footer>
                     </div>
                 </div>
-            </div>
-            
-        </div>
+
+                <div class="testimonial-card card h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/patient1.png') }}" class="rounded-circle mb-3" alt="Patient 1" width="100" height="100">
+                        <blockquote class="blockquote mb-0">
+                            <p>"The Panchakarma treatment transformed my health. I feel rejuvenated and full of energy!"</p>
+                        </blockquote>
+                        <footer class="blockquote-footer mt-3">John Doe</footer>
+                    </div>
+                </div>
+
+                <div class="testimonial-card card h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/patient2.jpg') }}" class="rounded-circle mb-3" alt="Patient 2" width="100" height="100">
+                        <blockquote class="blockquote mb-0">
+                            <p>"The herbal medicines helped me manage my chronic pain naturally. Highly recommended!"</p>
+                        </blockquote>
+                        <footer class="blockquote-footer mt-3">Jane Smith</footer>
+                    </div>
+                </div>
+
+                <div class="testimonial-card card h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/patient3.png') }}" class="rounded-circle mb-3" alt="Patient 3" width="100" height="100">
+                        <blockquote class="blockquote mb-0">
+                            <p>"The Ayurvedic detox completely revitalized my well-being. I feel refreshed and energized"</p>
+                        </blockquote>
+                        <footer class="blockquote-footer mt-3">Alice Johnson</footer>
+                    </div>
+                </div>
+      </div>
     </div>
-</section>
+  </section>
+
+
   <!-- Mission Section -->
 <section class="py-5">
     <div class="container mission-section p-5">
@@ -470,6 +495,27 @@
         .value-card:hover {
             transform: translateY(-5px);
         }
+    
+        /* testinomial code */
+
+        .scrollable-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 15px;
+    }
+    .scrollable-container::-webkit-scrollbar {
+      display: none;
+    }
+    .testimonial-card {
+      flex: 0 0 auto;
+      width: 250px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      text-align: center;
+    }
 
 
 
@@ -507,6 +553,23 @@
         // Adjust when carousel slides (for responsive loading)
         document.getElementById('clinicCarousel').addEventListener('slid.bs.carousel', adjustCarouselHeight);
     });
+
+// testinomial code    
+function addTestimonials() {
+    const container = document.getElementById('testimonial-container');
+    const cards = document.querySelectorAll('.testimonial-card');
+    cards.forEach(card => {
+      const clone = card.cloneNode(true);
+      container.appendChild(clone);
+    });
+  }
+  document.getElementById('testimonial-container').addEventListener('scroll', function() {
+    if (this.scrollLeft + this.clientWidth >= this.scrollWidth - 10) {
+      addTestimonials();
+    }
+  });
+// testinomial code  ends
+
     </script>
  
 
