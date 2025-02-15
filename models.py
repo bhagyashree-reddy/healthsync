@@ -3,17 +3,6 @@ from flask_login import UserMixin
 from datetime import datetime
 
 
-# class Contact(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     first_name = db.Column(db.String(50), nullable=False)
-#     last_name = db.Column(db.String(50), nullable=False)
-#     email = db.Column(db.String(100), nullable=False)
-#     subject = db.Column(db.String(100), nullable=False)
-#     contact_number = db.Column(db.String(15), nullable=False)
-#     city = db.Column(db.String(50))
-
-#     def __repr__(self):
-#         return f'<Contact {self.first_name} {self.last_name}>'
 
 
 

@@ -23,48 +23,6 @@ def home():
 
 
 
-# Route for the contact form, handles both GET and POST methods
-# @app.route('/contact', methods=['GET', 'POST'])
-# def contact():
-#     if request.method == 'POST':
-#         # Retrieve form data
-#         first_name = request.form.get('first_name')
-#         last_name = request.form.get('last_name')
-#         email = request.form.get('email')
-#         subject = request.form.get('subject')
-#         contact_number = request.form.get('contact_number')
-#         city = request.form.get('city', '')
-
-#         # Simple form validation
-#         if not first_name or not last_name or not email or not subject:
-#             flash('All fields are required!', 'danger')
-#             return redirect(url_for('contact'))
-
-#         if not (contact_number.isdigit() and len(contact_number) == 10):
-#             flash('Contact number must be exactly 10 digits!', 'danger')
-#             return redirect(url_for('contact'))
-
-#         # Create a new contact entry
-#         try:
-#             contact = Contact(
-#                 first_name=first_name,
-#                 last_name=last_name,
-#                 email=email,
-#                 subject=subject,
-#                 contact_number=contact_number,
-#                 city=city
-#             )
-#             db.session.add(contact)
-#             db.session.commit()
-#             flash('Form submitted successfully!', 'success')
-#             return redirect(url_for('contact'))
-#         except SQLAlchemyError as e:
-#             print(f"Error saving contact: {e}")
-#             db.session.rollback()
-#             flash('An error occurred while processing your request. Please try again later.', 'danger')
-
-#     return render_template('contact.html')
-
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -120,9 +78,7 @@ def book_appointment():
     if not (contact_number.isdigit() and len(contact_number) == 10):
         return jsonify({'status': 'error', 'message': 'Contact number must be exactly 10 digits!'})
 
-    # if not amount.isdigit():
-    #     return jsonify({'status': 'error', 'message': 'Amount must be a valid number!'})
-
+   
     # Save appointment
     try:
         new_appointment = Appointment(
@@ -252,7 +208,7 @@ def delete_image():
     flash('Image deleted successfully.', 'success')
     return redirect(url_for('upload'))
 
-# Route for event image and description upload, requires user to be logged in
+# Route for service image and description upload, requires user to be logged in
 
 
 @app.route('/service-upload', methods=['GET', 'POST'])
@@ -298,53 +254,6 @@ def service_upload():
 
 
 
-
-
-
-
-# Route for faculty information upload, requires user to be logged in
-@app.route('/faculty-upload', methods=['GET', 'POST'])
-@login_required
-def faculty_upload():
-    if request.method == 'POST':
-        faculty_image = request.files.get('faculty_image')
-        faculty_name = request.form.get('faculty_name')
-        faculty_designation = request.form.get('faculty_designation')
-        faculty_qualification = request.form.get('faculty_qualification')
-        faculty_age = request.form.get('faculty_age')
-        faculty_experience = request.form.get('faculty_experience')
-
-        # Basic validation
-        if not faculty_image or not faculty_name or not faculty_age or not faculty_experience or not faculty_qualification:
-            flash('All fields are required!', 'danger')
-            return redirect(url_for('faculty_upload'))
-
-        # Read the image data
-        image_name = faculty_image.filename
-        image_data = faculty_image.read()
-
-        # Create a new faculty entry
-        new_faculty = Faculty(
-            image_name=image_name,
-            image_data=image_data,
-            name=faculty_name,
-            designation=faculty_designation,
-            qualification=faculty_qualification,
-            age=faculty_age,
-            experience=faculty_experience
-        )
-
-        try:
-            db.session.add(new_faculty)
-            db.session.commit()
-            flash('Faculty information uploaded successfully!', 'success')
-        except Exception as e:
-            db.session.rollback()
-            flash(f'An error occurred: {e}', 'danger')
-
-        return redirect(url_for('faculty_upload'))
-
-    return render_template('upload.html')
 
 # Function to load a user by their ID for Flask-Login
 @login_manager.user_loader
